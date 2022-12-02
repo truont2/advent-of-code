@@ -1,5 +1,6 @@
-const fs = require("fs");
+import { readFileSync } from 'fs';
 
+// file reader
 const reader = {
   readFileData: function (fileDir) {
     try {
@@ -31,7 +32,7 @@ const processData = (fileData) => {
   let newArr = elfArr.sort(function (a, b) {
     return b - a;
   });
-  
+
   for (let i = 0; i < 3; i++) {
     topThree += parseInt(newArr[i]);
   }

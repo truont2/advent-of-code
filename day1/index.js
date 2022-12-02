@@ -1,10 +1,9 @@
-
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
 const reader = {
     readFileData: function(fileDir) {
         try {
-            const data = fs.readFileSync(fileDir, 'utf-8');
+            const data = readFileSync(fileDir, 'utf-8');
             return data;
         } catch (error) {
             throw Error(`Error: ${error}`);
@@ -12,19 +11,7 @@ const reader = {
     }
 };
 
-// now need to find the top three calories
-// can sort the results by decreasing order to get the top three
-const getTopThree = (dataArr) => {
-    let topThree = 0;
-    dataArr.sort(function(a, b){return b - a});
-    for(let i = 0; i < 3; i++) {
-        topThree+= parseInt(dataArr[i]);
-    }
-    console.log(topThree, 'top');
-    return topThree;
-}
-
-
+// process data and store into a map where we can iterate over and retrieve the max result
 const processData = (fileData) => {
     let elfMap = {};
     let counter = 0;
